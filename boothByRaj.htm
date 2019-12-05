@@ -28,7 +28,8 @@
 	function input(){
 		var a = parseInt(document.getElementById("a").value);
 		var b = parseInt(document.getElementById("b").value);
-		var bina = convertDecimalToBinary(a);
+		var bina1 = convertDecimalToBinary(a);
+		
 	}
 	function convertDecimalToBinary(n)
 	{
@@ -50,6 +51,7 @@
 	function convertBinaryToDecimal(n)
 	{
     		var decimalNumber = 0, i = 0, remainder;
+		n=parseInt(n);
     		while (n!=0)
     		{
         		remainder = n%10;

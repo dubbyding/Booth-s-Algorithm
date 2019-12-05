@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<input type="text" id="a" placeholder="Enter Multiplicant...">
+<input type="text" id="b" placeholder="Enter Multiplier...">
+<input type="submit" onclick="input()">
+<div class="container">
+	<div class = "img">
+		<img src = "rashik.png" width = 50%>
+	</div>
+	<div class="ta">
+		<table>
+		<tr>
+			<th>a</th>
+			<th>q</th>
+			<th>q(-1)</th>
+			<th>count</th>
+			<th>operation</th>
+		</tr>
+		<trow id="display"></trow>
+		</table>
+	</div>
+</div>
+<script>
+	function input(){
+		var a = parseInt(document.getElementById("a").value);
+		var b = parseInt(document.getElementById("b").value);
+		var bina = convertDecimalToBinary(a);
+	}
+	function convertDecimalToBinary(n)
+	{
+    		var binaryNumber = 0;
+    		var remainder = 0, i = 1;
+		n=parseInt(n);
+    		while (n>=1)
+    		{	
+        		remainder = n%2;
+			console.log(n);
+        		n = n/2;
+        		binaryNumber = binaryNumber + (remainder*i);
+        		i = i*10;
+			
+    		}
+    		return binaryNumber;
+	}
+
+	function convertBinaryToDecimal(n)
+	{
+    		var decimalNumber = 0, i = 0, remainder;
+    		while (n!=0)
+    		{
+        		remainder = n%10;
+        		n /= 10;
+        		decimalNumber += remainder*pow(2,i);
+        		++i;
+    		}
+    	return decimalNumber;
+	}
+</script>
+</body>
+</html>

@@ -9,7 +9,46 @@
 <input type="submit" onclick="input()">
 <div class="container">
 	<div class = "img">
-		<img src = "rashik.png" width = 50%>
+			<div id = "start">
+					Start
+			</div>
+			<div class = "Vline"></div>
+			<div class = "Initalize">
+				<div id ="InitValA">A = 0000</div>
+				<div id ="InitValQ">Q = NA</div>
+				<div id ="InitValQM">Q(-1) = 0</div>
+				<div id ="InitValM">M = NA</div>
+				<div id ="InitValC">Count = n</div>
+			</div>
+			<div class = "Vline"></div>
+			<div id = "diamond">
+				<div id="ConditionO">Q(0)Q(-1)</div>
+			</div>
+			<div id="diamondBottom"></div>
+			<div class ="Hline" id="OZ"></div>
+			<div class ="Hline" id="ZO"></div>
+			<div class ="Vline" id="OZV"></div>
+			<div class ="Vline" id ="ZOV"></div>
+			<div class = "ZOADD">
+				<div id="sub">A=A-M</div>
+			</div>
+			<div class = "OZADD">
+				<div id="add">A=A+M</div>
+			</div>
+			<div class = "Vline" id="AZOV"></div>
+			<div class = "Vline" id="AOZV"></div>
+			<div class ="Hline" id="AOZ"></div>
+			<div class ="Hline" id="AZO"></div>
+			<div class = "OOZZS">
+				ARITHMETIC SHIFT
+				<div id="shift">A,Q,Q(-1)</div>
+				<div id = "counter">Count = Count - 1</div>
+			</div>
+			<div class = "Vline"></div>
+			<div id = "diamond">
+				<div id="Condition1">Count = 0?</div>
+			</div>
+			<div id="diamondBottom"></div>
 	</div>
 	<div class="ta">
 		<table>
@@ -24,43 +63,7 @@
 		</table>
 	</div>
 </div>
-<script>
-	function input(){
-		var a = parseInt(document.getElementById("a").value);
-		var b = parseInt(document.getElementById("b").value);
-		var bina1 = convertDecimalToBinary(a);
-		
-	}
-	function convertDecimalToBinary(n)
-	{
-    		var binaryNumber = 0;
-    		var remainder = 0, i = 1;
-		n=parseInt(n);
-    		while (n>=1)
-    		{	
-        		remainder = n%2;
-			console.log(n);
-        		n = n/2;
-        		binaryNumber = binaryNumber + (remainder*i);
-        		i = i*10;
-			
-    		}
-    		return binaryNumber;
-	}
-
-	function convertBinaryToDecimal(n)
-	{
-    		var decimalNumber = 0, i = 0, remainder;
-		n=parseInt(n);
-    		while (n!=0)
-    		{
-        		remainder = n%10;
-        		n /= 10;
-        		decimalNumber += remainder*pow(2,i);
-        		++i;
-    		}
-    	return decimalNumber;
-	}
+<script src = "script.js">
 </script>
 </body>
 </html>

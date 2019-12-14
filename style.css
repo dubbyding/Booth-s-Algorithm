@@ -7,5 +7,107 @@ table,th,td{
 th, td { 
                 padding: 20px; 
                 background-color:none; 
-            } 
-              
+}
+
+.ta{
+    margin-left: 300px;
+}
+.img{
+    padding:20px;
+}
+.Vline{
+    width:2px;
+    background-color:black;
+    height:40px;
+    margin-left:248px;
+}
+.Hline{
+    height:2px;
+    background-color:black;
+    width:100px;
+    margin-left:248px;
+}
+#start,.Initalize,.OZADD,.ZOADD,.OOZZS{
+    display:block;
+    text-align:center;
+    height:50px;
+    width: 100px;
+    background-color: grey;
+    margin-left: 200px;
+}
+#start{
+    border-radius: 50%;
+    line-height: 45px;
+    vertical-align: middle;
+}
+.Initalize{
+    height:auto;
+}
+#InitValA,#InitValQ,#InitValQM,#InitValM,#InitValC{
+    height: 22px;
+}
+#diamond,#diamondBottom{
+    margin-left:199px;  
+   
+}
+#diamond {
+    position: relative;
+    width: 0;
+    height: 0;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-bottom: 50px solid #555;
+}
+#diamondBottom {
+    width: 0;
+	height: 0;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-top: 50px solid #555;
+}
+#ConditionO,#Condition1{
+    position: absolute;
+    text-align: center;
+    margin-top:30px;
+    margin-left:-32px;
+}   
+#OZ,#ZO{
+    position: absolute;
+    margin-top:-51px;
+}        
+#OZ,#AOZ{
+    margin-left:298px;
+}
+#ZO,#ZOV,#AZOV,#AZO{
+    margin-left:100px;
+}
+#OZV,#ZOV{
+    position: absolute;
+    margin-top:-51px;
+}
+#OZV,#AOZV{
+    margin-left: 398px;
+}
+.ZOADD{
+    margin-left:52px;
+    margin-top:-10px;
+}
+.OZADD{
+    margin-left:350px;
+    margin-top:-50px;
+}
+.OOZZS{
+    height:auto;
+    width:150px;
+    margin-left:174px;
+    margin-top:-30px;
+}
+#AOZV{
+    margin-top:-40px;
+}
+#AZO{
+    margin-top:-2px;
+}
+#AOZ{
+    margin-top:-2px;
+}

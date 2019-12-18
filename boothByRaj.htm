@@ -6,7 +6,7 @@
 <body>
 <input type="text" id="a" placeholder="Enter Multiplicant...">
 <input type="text" id="b" placeholder="Enter Multiplier...">
-<input type="submit" onclick="input()">
+<input type="submit" id = "submit"onclick="input()">
 <div class="container">
 	<div class = "img">
 			<div id = "start">
@@ -21,7 +21,9 @@
 				<div id ="InitValC">Count = n</div>
 			</div>
 			<div class = "Vline"></div>
-			<div id = "diamond">
+			<div class = "Hline" id="return"></div>
+			<div class = "Vline" id="returnVl"></div>
+			<div id = "diamond1">
 				<div id="ConditionO">Q(0)Q(-1)</div>
 			</div>
 			<div id="diamondBottom"></div>
@@ -55,14 +57,13 @@
 			<div class = "Vline"></div>
 			<div id="stop">Stop</div>
 	</div>
-	<div class="ta">
-		<table>
+	<div id="ta">
+		<table id ="table">
 		<tr>
 			<th>a</th>
 			<th>q</th>
 			<th>q(-1)</th>
 			<th>count</th>
-			<th>operation</th>
 		</tr>
 		<trow id="display"></trow>
 		</table>

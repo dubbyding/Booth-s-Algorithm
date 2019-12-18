@@ -27,7 +27,7 @@ th, td {
     width:100px;
     margin-left:248px;
 }
-#start,.Initalize,.OZADD,.ZOADD,.OOZZS{
+#start,.Initalize,.OZADD,.ZOADD,.OOZZS,#result,#stop{
     display:block;
     text-align:center;
     height:50px;
@@ -110,4 +110,17 @@ th, td {
 }
 #AOZ{
     margin-top:-2px;
+}
+#result,#stop{
+    background-color: grey;
+    width:100px;
+    height:50px;
+}
+#cond2Hline{
+    margin-top:-51px;
+    margin-left: 297px;
+    width:200px;
+}
+#cond2Vline{
+    margin-top:49px;
 }

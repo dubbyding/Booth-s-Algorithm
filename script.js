@@ -1,4 +1,5 @@
-var A = 0,M,Q,NeM,count,QMO=0,QO;
+var A = 0,M,Q,NeM,count,QMO=0,QO,power;
+
 function input(){
     var a = document.getElementById("a").value;
     var b = document.getElementById("b").value;
@@ -9,6 +10,8 @@ function input(){
     
     M = convertDecimalToBinary(a);
     Q = convertDecimalToBinary(b);
+    count = Q.toString().length+1;
+    power = Math.pow(10,(Q.toString().length - 1));
     NeM = twoComplement(M);
     Proc(1,0);
 }
@@ -16,33 +19,34 @@ function input(){
 function Proc(i){
     var j;
     QO = Q%10;
-    count = Q.toString().length;
     if(count == 0){
         return 0;
     }
-    for(j=1;j<=11;j++){
+    for(j=1;j<=13;j++){
         colorReturn(j);
     }   
-    if((i-1)==7){
+    if(i==7){
         if(QO == 1 && QMO == 0){
-            i=8;
-        }else if(QO==0 && QMO == 1){
-            i=7;
+            i = 8;
+            console.log(i);
+        }else if(QO == 0 && QMO == 1){
+            i = 9;
         }else{
-            i=9;
+            i = 10;
         }
+    }else if(i==8||i==9){
+        i = 10;
+    }else if(i == 11){
+        if(count!=0){
+            i = 7;
+        }else{
+            i++;
+        }
+    }else{
+        i++;
     }
     colorChange(i);
-    if(i==8||i==9){
-        i=9;
-    }
-    if(i==10){
-        count--;
-    }
-    if(i==11 && count!=0){
-        i=6;
-    }
-    setTimeout(Proc,500,++i);
+    setTimeout(Proc,500,i);
 }
 function colorChange(i){
     var change;
@@ -89,9 +93,20 @@ function colorChange(i){
             break;
         case 10:
             change = "shift";
+            arithmeticShiftRight();
+            document.getElementById(change).innerHTML = A + "," + Q + "," + QO;
+            document.getElementById("counter").innerHTML = "Count = "+count+" - 1"
+            count--;
             break;
         case 11:
             change = "Condition1";
+            document.getElementById(change).innerHTML = count + " = 0?"
+            break;
+        case 12:
+            change = "result";
+            break;
+        case 13:
+            change = "stop";
             break;
                                 
     }
@@ -135,7 +150,13 @@ function colorReturn(i){
             break;
         case 11:
             change = "Condition1";
-            break;                        
+            break;      
+        case 12:
+            change = "result";
+            break;
+        case 13:
+            change = "stop";
+            break;                  
     }
     document.getElementById(change).style.color = "black";
     document.getElementById(change).style.backgroundColor = "grey";
@@ -189,14 +210,15 @@ function twoComplement(n){
             }else{
                 temp = temp + i*0;
             }
+        }else{
+            if(rem==0){
+                temp=temp+i*rem;
+            }else{
+                temp=temp+i*rem;
+                flag = 1;
+            }
         }
-        if(rem==0 && flag == 0){
-            temp=temp+i*rem;
-        }else if(rem==1 && flag == 0){
-            temp=temp+i*rem;
-            flag = 1;
-            
-        }
+        
         i *= 10;
         n = parseInt(n/10);
         l--;
@@ -211,12 +233,9 @@ function sub(){
     var r1,r2,c=0;
     var tempA = parseInt(A);
     var tempNeM = parseInt(NeM);
-    console.log(tempNeM);
     while(tempA!=0||tempNeM!=0){
         r1 = tempA % 10;
         r2 = tempNeM % 10;
-        console.log(r1);
-        console.log(r2);
         tempA = parseInt(tempA / 10);
         tempNeM = parseInt(tempNeM / 10);
         if(c == 0){
@@ -284,4 +303,13 @@ function add(){
     }
     temp = temp + i * c; 
     return temp;
+}
+function arithmeticShiftRight(){
+    var temp1, temp2, temp3;
+    temp1 = A % 10;
+    temp2 = Q % 10;
+    temp3 = A % (power/10);
+    QMO = temp2;
+    Q = parseInt(Q / 10) + (power * temp1);
+    A = parseInt(A / 10) + (power * temp3);
 }

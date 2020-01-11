@@ -1,223 +1,45 @@
-var A, M, Q, NeM, count, QMO = 0,
-    QO, power, re, initCount, neg, decResult, posResult, index;
-var table;
+var M, Q, A, QMO, NM;
 //It takes input from the form and sends it to get processed
 function input() {
-    var i;
-    document.getElementById("submit").disabled = true;
-    for (i = 1; i <= 13; i++) {
-        reset(i);
-        console.log("Shit");
+    M = document.getElementById("a").value;
+    Q = document.getElementById("b").value;
+    A = new String,
+        QMO = "0";
+    M = convertDecimalToBinary(M);
+    Q = convertDecimalToBinary(Q);
+    NM = twoComplement(M);
+
+    console.log(Q + " " + M);
+    while (Q.length < M.length) {
+        Q = "0" + Q;
     }
-    var a = document.getElementById("a").value;
-    var b = document.getElementById("b").value;
-    if (a.length == 0 || b.length == 0) {
-        window.alert("Fill the form");
-        return 0;
+    while (Q.length > M.length) {
+        M = "0" + M;
     }
-    if (a < 0 || b < 0) {
-        neg = 1;
-    } else {
-        neg = 0;
+    console.log(Q + " " + M);
+    var l = Q.length,
+        count = l;
+    while (A.length != l) {
+        A = A + "0";
     }
-    M = convertDecimalToBinary(a);
-    Q = convertDecimalToBinary(b);
-    count = Q.toString().length + 1;
-    initCount = count;
-    power = Math.pow(10, count - 1);
-    NeM = twoComplement(M);
-    Proc(0);
-}
-//Display Functions
-function Proc(i) {
-    var j;
-    QO = Q % 10;
-    //I is the step number ie. i = 1 is start and i = 13 is stop and between is the steps to run
-    if (i == 13) {
-        return 0;
-    }
-    //for reseting everything so that steps can be shown
-    for (j = 1; j <= 13; j++) {
-        colorReturn(j);
-    }
-    //when i = 7 it reaches first condition
-    if (i == 7) {
-        //first condition for 10
-        if (QO == 1 && QMO == 0) {
-            i = 8;
-            //second condition for 01
-        } else if (QO == 0 && QMO == 1) {
-            i = 9;
-            //final condition for 11 or 00
-        } else {
-            i = 10;
+    while (count != 0) {
+        if (Q[l - 1] == "0" && QMO == "1") {
+            A = add(A, M);
+        } else if (Q[l - 1] == "1" && QMO == "0") {
+            A = add(A, NM);
         }
-        //after condition after 10 and 01 is processed it has to go to a same point
-    } else if (i == 8 || i == 9) {
-        //i = 10 is arithmetic shift position
-        i = 10;
-        //i = 11 is condition of count = 0?
-    } else if (i == 11) {
-        if (count != 0) {
-            i = 7;
-        } else {
-            i++;
-        }
-    } else {
-        //increment for next value
-        i++;
+        arithmeticShiftRight();
+        count--;
     }
-    //changing colour of that position
-    colorChange(i);
-    //delay in changing colour and displaying so that we can observe
-    setTimeout(Proc, 500, i);
-}
-
-function colorChange(i) {
-    var change;
-    if (i > 7 && i != 11 && i != 13) {
-        table = document.getElementById("table");
-        var row = table.insertRow(index);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
-        cell1.innerHTML = A;
-        cell2.innerHTML = Q;
-        cell3.innerHTML = QMO;
-        cell4.innerHTML = count;
-        index++;
-    }
-    switch (i) {
-        case 1:
-            change = "start";
-            break;
-        case 2:
-            change = "InitValA";
-            document.getElementById(change).innerHTML = "A = " + A;
-            break;
-        case 3:
-            change = "InitValQ";
-            document.getElementById(change).innerHTML = "Q = " + Q;
-            break;
-        case 4:
-            change = "InitValQM";
-            document.getElementById(change).innerHTML = "Q(-1) = " + QMO;
-            break;
-        case 5:
-            change = "InitValM";
-            document.getElementById(change).innerHTML = "M = " + M;
-            break;
-        case 6:
-            change = "InitValC";
-            document.getElementById(change).innerHTML = "Count = " + count;
-            break;
-        case 7:
-            change = "ConditionO";
-            document.getElementById(change).innerHTML = QO + "," + QMO;
-            document.getElementById(change).style.marginLeft = "-12px";
-            document.getElementById("diamond1").style.borderBottomColor = "yellow";
-            document.getElementById("diamondBottom").style.borderTopColor = "yellow";
-            break;
-        case 8:
-            change = "sub";
-            A = sub();
-            document.getElementById(change).innerHTML = "A = " + A;
-            break;
-        case 9:
-            change = "add";
-            A = add();
-            document.getElementById(change).innerHTML = "A = " + A;
-            break;
-        case 10:
-            change = "shift";
-            arithmeticShiftRight();
-            document.getElementById(change).innerHTML = A + "," + Q + "," + QO;
-            document.getElementById("counter").innerHTML = "Count = " + count + " - 1"
-            count--;
-            break;
-        case 11:
-            change = "Condition1";
-            document.getElementById(change).innerHTML = count + " = 0?"
-            break;
-        case 12:
-            change = "result";
-            re = parseInt(A + "" + Q);
-            if (neg == 1) {
-                posResult = twoComplement(re);
-            } else {
-                posResult = re;
-            }
-            decResult = convertBinaryToDecimal(posResult);
-            document.getElementById(change).innerHTML = re + "<br>" + decResult;
-            break;
-        case 13:
-            change = "stop";
-            document.getElementById("submit").disabled = false;
-            break;
-
-    }
-    //changing element so that we can observe
-    document.getElementById(change).style.color = "red";
-    document.getElementById(change).style.backgroundColor = "yellow";
-}
-
-function colorReturn(i) {
-    var change;
-    switch (i) {
-        case 1:
-            change = "start";
-            break;
-        case 2:
-            change = "InitValA";
-            break;
-        case 3:
-            change = "InitValQ";
-            break;
-        case 4:
-            change = "InitValQM";
-            break;
-        case 5:
-            change = "InitValM";
-            break;
-        case 6:
-            change = "InitValC";
-            break;
-        case 7:
-            change = "ConditionO";
-            document.getElementById("diamond1").style.borderBottomColor = "grey";
-            document.getElementById("diamondBottom").style.borderTopColor = "grey";
-            break;
-        case 8:
-            change = "sub";
-            break;
-        case 9:
-            change = "add";
-            break;
-        case 10:
-            change = "shift";
-            break;
-        case 11:
-            change = "Condition1";
-            break;
-        case 12:
-            change = "result";
-            break;
-        case 13:
-            change = "stop";
-            break;
-    }
-    //reseting element back to normal
-    document.getElementById(change).style.color = "black";
-    document.getElementById(change).style.backgroundColor = "grey";
+    alert(A + " " + Q);
 }
 
 function convertDecimalToBinary(n) {
-    var binaryNumber = "";
+    var binaryNumber = new String;
     var remainder = 0,
         rem,
         i = 1,
-        rev = " ",
+        rev = new String,
         ne;
     //checking if number is negative
     if (n < 0) {
@@ -230,17 +52,16 @@ function convertDecimalToBinary(n) {
         remainder = n % 2;
         n = parseInt(n / 2);
         rem = remainder.toString();
-        binaryNumber = binaryNumber.concat(rem);
+        binaryNumber = binaryNumber + rem;
         i = i * 10;
     }
-    binaryNumber = binaryNumber.concat("0");
+    binaryNumber = binaryNumber + "0";
 
     l = binaryNumber.length - 1;
     for (i = l; i >= 0; i--) {
-        rev = rev.concat(binaryNumber[i]);
+        rev = rev + binaryNumber[i];
     }
     binaryNumber = rev;
-
     if (ne == 1) {
         binaryNumber = twoComplement(binaryNumber);
     }
@@ -252,7 +73,6 @@ function convertBinaryToDecimal(n) {
     var decimalNumber = 0,
         i = 1,
         n, neg = 0;
-    console.log("Fucking hell");
     if (n[0] == "1") {
         neg = 1;
         n = twoComplement(n);
@@ -271,198 +91,110 @@ function convertBinaryToDecimal(n) {
 }
 
 function twoComplement(n) {
-    var temp = "0",
-        rev = "",
+    var temp = new String,
+        rev = new String,
         flag = 0,
         i;
     var l = n.length - 1;
-    console.log(l);
     for (i = l; i >= 0; i--) {
         if (flag == 1) {
             if (n[i] == "0") {
-                temp = temp.concat("1");
+                temp = temp + "1";
             } else {
-                temp = temp.concat("0");
+                temp = temp + "0";
             }
         } else {
             if (n[i] == "0") {
-                temp = temp.concat(n[i]);
+                temp = temp + n[i];
             } else {
-                temp = temp.concat(n[i]);
+                temp = temp + n[i];
                 flag = 1;
             }
         }
     }
-    for (i = l; i > 0; i--) {
-        rev = rev.concat(temp[i]);
+    for (i = l; i >= 0; i--) {
+        rev = rev + temp[i];
     }
     return rev;
 }
 
-function sub() {
-    var temp = 0,
-        i = 1;
-    var r1, r2, c = 0;
-    var tempA = parseInt(A);
-    var tempNeM = parseInt(NeM);
-    while (tempA != 0 || tempNeM != 0) {
-        r1 = tempA % 10;
-        r2 = tempNeM % 10;
-        tempA = parseInt(tempA / 10);
-        tempNeM = parseInt(tempNeM / 10);
-        if (c == 0) {
-            if (r1 == 0 && r2 == 0) {
-                temp = temp + i * 0;
-                c = 0;
-            } else if (r1 == 1 && r2 == 1) {
-                temp = temp + i * 0;
-                c = 1;
-            } else {
-                temp = temp + i * 1;
-                c = 0;
+function add(O, P) {
+    var l = P.length,
+        i, result = new String,
+        c = "0",
+        rev = new String;
+    for (i = l - 1; i >= 0; i--) {
+        if (c == "0") {
+            if (O[i] == "1") {
+                if (P[i] == "1") {
+                    result = result + "0";
+                    c = "1";
+                    console.log(result + " 1" + i);
+                }
+                if (P[i] == "0") {
+                    result = result + "1";
+                    c = "0";
+                    console.log(result + " 2" + i);
+                }
+            } else if (O[i] == "0") {
+                if (P[i] == "1") {
+                    result = result + "1";
+                    c = "0";
+                    console.log(result + " 3" + i);
+                }
+                if (P[i] == "0") {
+                    result = result + "0";
+                    c = "0";
+                    console.log(result + " 4" + i);
+                }
             }
         } else {
-            if (r1 == 0 && r2 == 0) {
-                temp = temp + i * 1;
-                c = 0;
-            } else if (r1 == 1 && r2 == 1) {
-                temp = temp + i * 1;
-                c = 1;
-            } else {
-                temp = temp + i * 0;
-                c = 1;
+            if (O[i] == "1") {
+                if (P[i] == "1") {
+                    result = result + "1";
+                    c = "1";
+                    console.log(result + " 5" + i);
+                }
+                if (P[i] == "0") {
+                    result = result + "0";
+                    c = "1";
+                    console.log(result + " 6" + i);
+                }
+            } else if (O[i] == "0") {
+                if (P[i] == "1") {
+                    result = result + "0";
+                    c = "1";
+                    console.log(result + " 7" + i);
+                }
+                if (P[i] == "0") {
+                    result = result + "1";
+                    c = "0";
+                    console.log(result + " 8" + i);
+                }
             }
         }
-        i *= 10;
-    }
-    return temp;
-}
 
-function add() {
-    var temp = 0,
-        i = 1;
-    var r1, r2, c = 0;
-    var tempA = parseInt(A);
-    var tempM = parseInt(M);
-    while (tempA != 0 || tempM != 0) {
-        r1 = tempA % 10;
-        r2 = tempM % 10;
-        tempA = parseInt(tempA / 10);
-        tempM = parseInt(tempM / 10);
-        if (c == 0) {
-            if (r1 == 0 && r2 == 0) {
-                temp = temp + i * 0;
-                c = 0;
-            } else if (r1 == 1 && r2 == 1) {
-                temp = temp + i * 0;
-                c = 1;
-            } else {
-                temp = temp + i * 1;
-                c = 0;
-            }
-        } else {
-            if (r1 == 0 && r2 == 0) {
-                temp = temp + i * 1;
-                c = 0;
-            } else if (r1 == 1 && r2 == 1) {
-                temp = temp + i * 1;
-                c = 1;
-            } else {
-                temp = temp + i * 0;
-                c = 1;
-            }
-        }
-        i *= 10;
     }
-    return temp;
+    for (i = l - 1; i >= 0; i--) {
+        rev = rev + result[i];
+    }
+    console.log(rev);
+    return (rev);
 }
 
 function arithmeticShiftRight() {
-    var temp1, temp2, temp3;
-    temp1 = A % 10;
-    temp2 = Q % 10;
-    temp3 = parseInt(A / power);
-    QMO = temp2;
-    Q = parseInt(Q / 10) + (power * temp1);
-    A = parseInt(A / 10) + (power * temp3);
-}
-
-function reset(i) {
-    A = M = Q = NeM = count = QMO = QO = power = re = initCount = neg = decResult = posResult = 0;
-    index = 1;
-    var change;
-    switch (i) {
-        case 1:
-            change = "start";
-            break;
-        case 2:
-            change = "InitValA";
-            document.getElementById(change).innerHTML = "A = 0000";
-            break;
-        case 3:
-            change = "InitValQ";
-            document.getElementById(change).innerHTML = "Q = NA";
-            break;
-        case 4:
-            change = "InitValQM";
-            document.getElementById(change).innerHTML = "Q(-1) = 0";
-            break;
-        case 5:
-            change = "InitValM";
-            document.getElementById(change).innerHTML = "M = NA";
-            break;
-        case 6:
-            change = "InitValC";
-            document.getElementById(change).innerHTML = "Count = n";
-            break;
-        case 7:
-            change = "ConditionO";
-            document.getElementById(change).innerHTML = "Q(O)Q(-1)";
-            document.getElementById(change).style.marginLeft = "-33px";
-            document.getElementById("diamond1").style.borderBottomColor = "grey";
-            document.getElementById("diamondBottom").style.borderTopColor = "grey";
-            break;
-        case 8:
-            change = "sub";
-            A = sub();
-            document.getElementById(change).innerHTML = "A = A - M";
-            break;
-        case 9:
-            change = "add";
-            A = add();
-            document.getElementById(change).innerHTML = "A = A + M";
-            break;
-        case 10:
-            change = "shift";
-            arithmeticShiftRight();
-            document.getElementById(change).innerHTML = "A , Q, QO";
-            document.getElementById("counter").innerHTML = "Count = Count - 1"
-            count--;
-            break;
-        case 11:
-            change = "Condition1";
-            document.getElementById(change).innerHTML = "Count = 0?"
-            break;
-        case 12:
-            change = "result";
-            document.getElementById(change).innerHTML = "Result";
-            break;
-        case 13:
-            change = "stop";
-            table = document.getElementById("table");
-            table.innerHTML = "";
-            var row = table.insertRow(0);
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            var cell4 = row.insertCell(3);
-            cell1.innerHTML = "A";
-            cell2.innerHTML = "Q";
-            cell3.innerHTML = "Q(-1)";
-            cell4.innerHTML = "count";
-            break;
+    var l = Q.length - 1,
+        i;
+    Q = Q.split("");
+    A = A.split("");
+    QMO = Q[l];
+    for (i = l; i > 0; i--) {
+        Q[i] = Q[i - 1];
     }
-    //changing element so that we can observe
-    document.getElementById(change).style.color = "black";
-    document.getElementById(change).style.backgroundColor = "grey";
+    Q[0] = A[l];
+    for (i = l; i > 0; i--) {
+        A[i] = A[i - 1];
+    }
+    Q = Q.join("");
+    A = A.join("");
 }

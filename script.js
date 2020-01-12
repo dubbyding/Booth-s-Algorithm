@@ -1,25 +1,16 @@
-var M, Q, A, QMO, NM;
 //It takes input from the form and sends it to get processed
 function input() {
-    M = document.getElementById("a").value;
-    Q = document.getElementById("b").value;
+    var M, Q, A, QMO, NM, Final;
+    var a = parseInt(document.getElementById("a").value);
+    var b = parseInt(document.getElementById("b").value);
     A = new String,
         QMO = "0";
-    M = convertDecimalToBinary(M);
-    Q = convertDecimalToBinary(Q);
+    M = convertDecimalToBinary(a);
+    Q = convertDecimalToBinary(b);
     NM = twoComplement(M);
-
-    console.log(Q + " " + M);
-    while (Q.length < M.length) {
-        Q = "0" + Q;
-    }
-    while (Q.length > M.length) {
-        M = "0" + M;
-    }
-    console.log(Q + " " + M);
     var l = Q.length,
         count = l;
-    while (A.length != l) {
+    while (A.length != M.length) {
         A = A + "0";
     }
     while (count != 0) {
@@ -28,10 +19,19 @@ function input() {
         } else if (Q[l - 1] == "1" && QMO == "0") {
             A = add(A, NM);
         }
-        arithmeticShiftRight();
+        A = A.split("");
+        Q = Q.split("");
+        QMO = QMO.split("");
+        console.log(A + " " + Q + " " + QMO);
+        arithmeticShiftRight(A, Q, QMO);
+        A = A.join("");
+        Q = Q.join("");
+        QMO = QMO.join("");
+        console.log(A + " " + Q + " " + QMO);
         count--;
     }
-    alert(A + " " + Q);
+    Final = convertBinaryToDecimal(A + Q);
+    alert(Final);
 }
 
 function convertDecimalToBinary(n) {
@@ -120,81 +120,68 @@ function twoComplement(n) {
 
 function add(O, P) {
     var l = P.length,
-        i, result = new String,
+        i, result = new Array,
         c = "0",
-        rev = new String;
+        rev = new Array;
+    O = O.split("");
+    P = P.split("");
     for (i = l - 1; i >= 0; i--) {
         if (c == "0") {
             if (O[i] == "1") {
                 if (P[i] == "1") {
-                    result = result + "0";
+                    result[i] = "0";
                     c = "1";
-                    console.log(result + " 1" + i);
                 }
                 if (P[i] == "0") {
-                    result = result + "1";
+                    result[i] = "1";
                     c = "0";
-                    console.log(result + " 2" + i);
                 }
             } else if (O[i] == "0") {
                 if (P[i] == "1") {
-                    result = result + "1";
+                    result[i] = "1";
                     c = "0";
-                    console.log(result + " 3" + i);
                 }
                 if (P[i] == "0") {
-                    result = result + "0";
+                    result[i] = "0";
                     c = "0";
-                    console.log(result + " 4" + i);
                 }
             }
         } else {
             if (O[i] == "1") {
                 if (P[i] == "1") {
-                    result = result + "1";
+                    result[i] = "1";
                     c = "1";
-                    console.log(result + " 5" + i);
                 }
                 if (P[i] == "0") {
-                    result = result + "0";
+                    result[i] = "0";
                     c = "1";
-                    console.log(result + " 6" + i);
                 }
             } else if (O[i] == "0") {
                 if (P[i] == "1") {
-                    result = result + "0";
+                    result[i] = "0";
                     c = "1";
-                    console.log(result + " 7" + i);
                 }
                 if (P[i] == "0") {
-                    result = result + "1";
+                    result[i] = "1";
                     c = "0";
-                    console.log(result + " 8" + i);
                 }
             }
         }
-
     }
-    for (i = l - 1; i >= 0; i--) {
-        rev = rev + result[i];
-    }
-    console.log(rev);
+    rev = result.join("");
     return (rev);
 }
 
-function arithmeticShiftRight() {
+function arithmeticShiftRight(A, Q, QMO) {
     var l = Q.length - 1,
         i;
-    Q = Q.split("");
-    A = A.split("");
-    QMO = Q[l];
+    QMO[0] = Q[l];
     for (i = l; i > 0; i--) {
         Q[i] = Q[i - 1];
     }
+    l = A.length - 1;
     Q[0] = A[l];
     for (i = l; i > 0; i--) {
         A[i] = A[i - 1];
     }
-    Q = Q.join("");
-    A = A.join("");
 }

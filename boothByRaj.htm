@@ -1,75 +1,82 @@
 <!doctype html>
 <html>
+
 <head>
-	<link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
-<input type="text" id="a" placeholder="Enter Multiplicant...">
-<input type="text" id="b" placeholder="Enter Multiplier...">
-<input type="submit" id = "submit"onclick="input()">
-<div class="container">
-	<div class = "img">
-			<div id = "start">
-					Start
-			</div>
-			<div class = "Vline"></div>
-			<div class = "Initalize">
-				<div id ="InitValA">A = 0000</div>
-				<div id ="InitValQ">Q = NA</div>
-				<div id ="InitValQM">Q(-1) = 0</div>
-				<div id ="InitValM">M = NA</div>
-				<div id ="InitValC">Count = n</div>
-			</div>
-			<div class = "Vline"></div>
-			<div class = "Hline" id="return"></div>
-			<div class = "Vline" id="returnVl"></div>
-			<div id = "diamond1">
-				<div id="ConditionO">Q(0)Q(-1)</div>
-			</div>
-			<div id="diamondBottom"></div>
-			<div class ="Hline" id="OZ"></div>
-			<div class ="Hline" id="ZO"></div>
-			<div class ="Vline" id="OZV"></div>
-			<div class ="Vline" id ="ZOV"></div>
-			<div class = "ZOADD">
-				<div id="sub">A=A-M</div>
-			</div>
-			<div class = "OZADD">
-				<div id="add">A=A+M</div>
-			</div>
-			<div class = "Vline" id="AZOV"></div>
-			<div class = "Vline" id="AOZV"></div>
-			<div class ="Hline" id="AOZ"></div>
-			<div class ="Hline" id="AZO"></div>
-			<div class = "OOZZS">
-				ARITHMETIC SHIFT
-				<div id="shift">A,Q,Q(-1)</div>
-				<div id = "counter">Count = Count - 1</div>
-			</div>
-			<div class = "Vline"></div>
-			<div id = "diamond">
-				<div id="Condition1">Count = 0?</div>
-			</div>
-			<div id="diamondBottom"></div>
-			<div class = "Hline" id = "cond2Hline"></div>
-			<div class = "Vline" id = "cond2Vline"></div>
-			<div id="result">Result</div>
-			<div class = "Vline"></div>
-			<div id="stop">Stop</div>
-	</div>
-	<div id="ta">
-		<table id ="table">
-		<tr>
-			<th>a</th>
-			<th>q</th>
-			<th>q(-1)</th>
-			<th>count</th>
-		</tr>
-		<trow id="display"></trow>
-		</table>
-	</div>
-</div>
-<script src = "script.js">
-</script>
+    <input type="text" id="a" placeholder="Enter Multiplicant...">
+    <input type="text" id="b" placeholder="Enter Multiplier...">
+    <input type="submit" id="submit" onclick="input()">
+    <div class="container">
+        <div class="img">
+            <div id="start">
+                Start
+            </div>
+            <div class="Vline"></div>
+            <div class="Initalize">
+                <div id="InitValA">A = 0000</div>
+                <div id="InitValQ">Q = NA</div>
+                <div id="InitValQM">Q(-1) = 0</div>
+                <div id="InitValM">M = NA</div>
+                <div id="InitValC">Count = n</div>
+            </div>
+            <div class="Vline"></div>
+            <div class="Hline" id="return"></div>
+            <div class="Vline" id="returnVl"></div>
+            <div id="diamond1">
+                <div id="ConditionO">Q(0)Q(-1)</div>
+            </div>
+            <div id="diamondBottom"></div>
+            <div class="Hline" id="OZ"></div>
+            <div class="Hline" id="ZO"></div>
+            <div class="Vline" id="OZV"></div>
+            <div class="Vline" id="ZOV"></div>
+            <div class="ZOADD">
+                <div id="sub">A=A-M</div>
+            </div>
+            <div class="OZADD">
+                <div id="add">A=A+M</div>
+            </div>
+            <div class="Vline" id="AZOV"></div>
+            <div class="Vline" id="AOZV"></div>
+            <div class="Hline" id="AOZ"></div>
+            <div class="Hline" id="AZO"></div>
+            <div class="OOZZS">
+                ARITHMETIC SHIFT
+                <div id="shift">A,Q,Q(-1)</div>
+                <div id="counter">Count = Count - 1</div>
+            </div>
+            <div class="Vline"></div>
+            <div id="diamond">
+                <div id="Condition1">Count = 0?</div>
+            </div>
+            <div id="diamondBottom"></div>
+            <div class="Hline" id="cond2Hline"></div>
+            <div class="Vline" id="cond2Vline"></div>
+            <div id="result">Result</div>
+            <div class="Vline"></div>
+            <div id="stop">Stop</div>
+        </div>
+        <div class="Next">
+            <button type="button" id="nxt" onclick="run()">Next</button>
+        </div>
+        <div id="ta">
+            <table id="table">
+                <tr>
+                    <th>a</th>
+                    <th>q</th>
+                    <th>q(-1)</th>
+                    <th>count</th>
+                </tr>
+                <trow id="display"></trow>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js">
+    </script>
 </body>
+
 </html>

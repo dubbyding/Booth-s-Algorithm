@@ -1,6 +1,6 @@
+var M, Q, A, QMO, NM, Final, position = 0;
 //It takes input from the form and sends it to get processed
 function input() {
-    var M, Q, A, QMO, NM, Final;
     var a = parseInt(document.getElementById("a").value);
     var b = parseInt(document.getElementById("b").value);
     A = new String,
@@ -22,16 +22,32 @@ function input() {
         A = A.split("");
         Q = Q.split("");
         QMO = QMO.split("");
-        console.log(A + " " + Q + " " + QMO);
         arithmeticShiftRight(A, Q, QMO);
         A = A.join("");
         Q = Q.join("");
         QMO = QMO.join("");
-        console.log(A + " " + Q + " " + QMO);
         count--;
     }
     Final = convertBinaryToDecimal(A + Q);
     alert(Final);
+}
+
+function run() {
+    while (count != 0) {
+        if (Q[l - 1] == "0" && QMO == "1") {
+            A = add(A, M);
+        } else if (Q[l - 1] == "1" && QMO == "0") {
+            A = add(A, NM);
+        }
+        A = A.split("");
+        Q = Q.split("");
+        QMO = QMO.split("");
+        arithmeticShiftRight(A, Q, QMO);
+        A = A.join("");
+        Q = Q.join("");
+        QMO = QMO.join("");
+        count--;
+    }
 }
 
 function convertDecimalToBinary(n) {

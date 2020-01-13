@@ -1,141 +1,215 @@
-.container{
-	display:flex;
-}
-table,th,td{
-	border:2px solid black;
-}
-th, td { 
-                padding: 20px; 
-                background-color:none; 
+.container {
+    display: flex;
 }
 
-.ta{
+table,
+th,
+td {
+    border: 2px solid black;
+}
+
+th,
+td {
+    padding: 20px;
+    background-color: none;
+}
+
+.ta {
     margin-left: 300px;
 }
-.img{
-    padding:20px;
+
+.img {
+    padding: 20px;
 }
-.Vline{
-    width:2px;
-    background-color:black;
-    height:40px;
-    margin-left:248px;
+
+.Vline {
+    width: 2px;
+    background-color: black;
+    height: 40px;
+    margin-left: 248px;
 }
-.Hline{
-    height:2px;
-    background-color:black;
-    width:100px;
-    margin-left:248px;
+
+.Hline {
+    height: 2px;
+    background-color: black;
+    width: 100px;
+    margin-left: 248px;
 }
-#start,.Initalize,.OZADD,.ZOADD,.OOZZS,#result,#stop{
-    display:block;
-    text-align:center;
-    height:50px;
+
+#start,
+.Initalize,
+.OZADD,
+.ZOADD,
+.OOZZS,
+#result,
+#stop {
+    display: block;
+    text-align: center;
+    height: 50px;
     width: 100px;
     background-color: grey;
     margin-left: 200px;
 }
-#start,#stop{
+
+#start,
+#stop {
     border-radius: 50%;
     line-height: 45px;
     vertical-align: middle;
 }
-.Initalize{
-    height:auto;
+
+.Initalize {
+    height: auto;
 }
-#InitValA,#InitValQ,#InitValQM,#InitValM,#InitValC{
+
+#InitValA,
+#InitValQ,
+#InitValQM,
+#InitValM,
+#InitValC {
     height: 22px;
 }
-#return{
-    margin-top:-20px;
-    width:240px;
+
+#return {
+    margin-top: -20px;
+    width: 240px;
 }
-#returnVl{
-    margin-left:486px;
+
+#returnVl {
+    margin-left: 486px;
     height: 314px;
 }
-#diamond1{
-    margin-top:-296px;
+
+#diamond1 {
+    margin-top: -296px;
 }
-#diamond1,#diamond,#diamondBottom{
-    margin-left:199px;  
+
+#diamond1,
+#diamond,
+#diamondBottom {
+    margin-left: 199px;
 }
-#diamond1, #diamond {
+
+#diamond1,
+#diamond {
     position: relative;
     width: 0;
     height: 0;
-	border-left: 50px solid transparent;
-	border-right: 50px solid transparent;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
 }
-#diamond1{
+
+#diamond1 {
     border-bottom: 50px solid grey;
 }
-#diamond{
+
+#diamond {
     border-bottom: 50px solid grey;
 }
+
 #diamondBottom {
     width: 0;
-	height: 0;
-	border-left: 50px solid transparent;
-	border-right: 50px solid transparent;
-	border-top: 50px solid grey;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 50px solid grey;
 }
-#ConditionO,#Condition1{
+
+#ConditionO,
+#Condition1 {
     position: absolute;
     text-align: center;
-    margin-top:30px;
-    margin-left:-32px;
-}   
-#OZ,#ZO{
+    margin-top: 30px;
+    margin-left: -32px;
+}
+
+#OZ,
+#ZO {
     position: absolute;
-    margin-top:-51px;
-}        
-#OZ,#AOZ{
-    margin-left:298px;
+    margin-top: -51px;
 }
-#ZO,#ZOV,#AZOV,#AZO{
-    margin-left:100px;
+
+#OZ,
+#AOZ {
+    margin-left: 298px;
 }
-#OZV,#ZOV{
+
+#ZO,
+#ZOV,
+#AZOV,
+#AZO {
+    margin-left: 100px;
+}
+
+#OZV,
+#ZOV {
     position: absolute;
-    margin-top:-51px;
+    margin-top: -51px;
 }
-#OZV,#AOZV{
+
+#OZV,
+#AOZV {
     margin-left: 398px;
 }
-.ZOADD{
-    margin-left:52px;
-    margin-top:-10px;
+
+.ZOADD {
+    margin-left: 52px;
+    margin-top: -10px;
 }
-.OZADD{
-    margin-left:350px;
-    margin-top:-50px;
+
+.OZADD {
+    margin-left: 350px;
+    margin-top: -50px;
 }
-.OOZZS{
-    height:auto;
-    width:150px;
-    margin-left:174px;
-    margin-top:-30px;
+
+.OOZZS {
+    height: auto;
+    width: 150px;
+    margin-left: 174px;
+    margin-top: -30px;
 }
-#AOZV{
-    margin-top:-40px;
+
+#AOZV {
+    margin-top: -40px;
 }
-#AZO{
-    margin-top:-2px;
+
+#AZO {
+    margin-top: -2px;
 }
-#AOZ{
-    margin-top:-2px;
+
+#AOZ {
+    margin-top: -2px;
 }
-#result{
+
+#result {
     background-color: grey;
-    width:100px;
-    height:50px;
+    width: 100px;
+    height: 50px;
 }
-#cond2Hline{
-    margin-top:-51px;
+
+#cond2Hline {
+    margin-top: -51px;
     margin-left: 297px;
-    width:190px;
+    width: 190px;
 }
-#cond2Vline{
-    margin-top:49px;
+
+#cond2Vline {
+    margin-top: 49px;
+}
+
+.Next {
+    width: 200px;
+}
+
+#nxt {
+    background-color: grey;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 }

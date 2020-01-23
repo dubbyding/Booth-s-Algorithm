@@ -77,11 +77,11 @@ td {
 
 #returnVl {
     margin-left: 486px;
-    height: 314px;
+    height: 348px;
 }
 
 #diamond1 {
-    margin-top: -296px;
+    margin-top: -331px;
 }
 
 #diamond1,
@@ -122,11 +122,13 @@ td {
     margin-top: 30px;
     margin-left: -32px;
 }
-
+#OOZZ{
+    height: 60px;
+}
 #OZ,
 #ZO {
     position: absolute;
-    margin-top: -51px;
+    margin-top: -110px;
 }
 
 #OZ,
@@ -144,7 +146,7 @@ td {
 #OZV,
 #ZOV {
     position: absolute;
-    margin-top: -51px;
+    margin-top: -110px;
 }
 
 #OZV,
@@ -154,7 +156,7 @@ td {
 
 .ZOADD {
     margin-left: 52px;
-    margin-top: -10px;
+    margin-top: -70px;
 }
 
 .OZADD {
@@ -163,7 +165,7 @@ td {
 }
 
 .OOZZS {
-    height: auto;
+    height: 90px;
     width: 150px;
     margin-left: 174px;
     margin-top: -30px;
@@ -195,21 +197,4 @@ td {
 
 #cond2Vline {
     margin-top: 49px;
-}
-
-.Next {
-    width: 200px;
-}
-
-#nxt {
-    background-color: grey;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
 }

@@ -9,6 +9,7 @@
     <input type="text" id="a" placeholder="Enter Multiplicant...">
     <input type="text" id="b" placeholder="Enter Multiplier...">
     <input type="submit" id="submit" onclick="input()">
+    <button id = "next" onclick="goNext()" disabled>Next</button>
     <div class="container">
         <div class="img">
             <div id="start">
@@ -29,24 +30,28 @@
                 <div id="ConditionO">Q(0)Q(-1)</div>
             </div>
             <div id="diamondBottom"></div>
+            
+            <div class = "Vline" id="OOZZ"></div>
             <div class="Hline" id="OZ"></div>
             <div class="Hline" id="ZO"></div>
             <div class="Vline" id="OZV"></div>
             <div class="Vline" id="ZOV"></div>
             <div class="ZOADD">
-                <div id="sub">A=A-M</div>
+                A=A-M
+                <div id="sub"></div>
             </div>
             <div class="OZADD">
-                <div id="add">A=A+M</div>
+                A=A+M
+                <div id="add"></div>
             </div>
             <div class="Vline" id="AZOV"></div>
             <div class="Vline" id="AOZV"></div>
             <div class="Hline" id="AOZ"></div>
             <div class="Hline" id="AZO"></div>
             <div class="OOZZS">
-                ARITHMETIC SHIFT
-                <div id="shift">A,Q,Q(-1)</div>
-                <div id="counter">Count = Count - 1</div>
+                ARITHMETIC SHIFT<br>A,Q,Q(-1)
+                <div id="shift"></div>Count = Count - 1
+                <div id="counter"></div>
             </div>
             <div class="Vline"></div>
             <div id="diamond">
@@ -59,9 +64,6 @@
             <div class="Vline"></div>
             <div id="stop">Stop</div>
         </div>
-        <div class="Next">
-            <button type="button" id="nxt" onclick="run()">Next</button>
-        </div>
         <div id="ta">
             <table id="table">
                 <tr>
@@ -69,6 +71,7 @@
                     <th>q</th>
                     <th>q(-1)</th>
                     <th>count</th>
+                    <th>Reason</th>
                 </tr>
                 <trow id="display"></trow>
             </table>

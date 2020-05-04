@@ -61,7 +61,6 @@ function goNext(){
             i+=2;
             insTable("A = A + M");
             
-            console.log(parseInt(document.getElementById("inpA").value));
             break;
         case 8:
             A = add(A, NM);
@@ -70,8 +69,6 @@ function goNext(){
             document.getElementById("sub").style.color="Yellow";
             i++;
             insTable("A = A - M");
-            
-            console.log(parseInt(document.getElementById("inpA").value));
             break;
         case 9:
             A = A.split("");

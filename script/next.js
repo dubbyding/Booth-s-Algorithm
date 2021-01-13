@@ -1,5 +1,4 @@
 function goNext(){
-    console.log(i);
     
     switch(i){
         case 0:
@@ -113,7 +112,8 @@ function goNext(){
         case 13:
             document.getElementById("result").style.color="black";
             document.getElementById("stop").style.color="Yellow";
-            alert(Final);
+            document.getElementById("Final_answer").innerHTML = Final;
+            document.getElementById("Final_answer").style.backgroundColor="Yellow";
             document.getElementById("submit").disabled = false;
             document.getElementById("next").disabled = true;
             i=0;

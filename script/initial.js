@@ -15,5 +15,7 @@ function input() {
     }
     document.getElementById("submit").disabled = true;
     document.getElementById("next").disabled = false;
+    document.getElementById("Final_answer").innerHTML = "";
+    document.getElementById("Final_answer").style.backgroundColor="";
     resetTable();
 }
